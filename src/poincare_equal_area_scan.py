@@ -25,10 +25,10 @@ The uniform-angle comparison uses the SAME latent torus samples, but the
 version-2 mapping q=180*u, h=90*v. This isolates mapping bias from scheduling.
 Its initial angles are (90,0) degrees (also H); version 3 starts at (0,0).
 
-Run: python poincare_equal_area_scan.py
-Save: python poincare_equal_area_scan.py --save equal_area_scan.png
-Export targets: python poincare_equal_area_scan.py --csv equal_area_scan.csv
-Validate: python poincare_equal_area_scan.py --check
+Run: python src/poincare_equal_area_scan.py
+Save: python src/poincare_equal_area_scan.py --save fig/equal_area_scan.png
+Export targets: python src/poincare_equal_area_scan.py --csv data/equal_area_scan.csv
+Validate: python src/poincare_equal_area_scan.py --check
 """
 
 import argparse

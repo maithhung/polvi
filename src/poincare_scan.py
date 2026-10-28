@@ -1,9 +1,9 @@
 """Interactive Poincare-sphere scan: horizontal input -> QWP(q) -> HWP(h).
 
-Run: python poincare_scan.py
+Run: python src/poincare_scan.py
 Dependencies: python -m pip install numpy matplotlib
 Save a static plot without opening a window:
-    python poincare_scan.py --save poincare_scan.png
+    python src/poincare_scan.py --save fig/poincare_scan.png
 
 Angles are fast-axis angles from +x toward +y in a fixed transverse basis.
 J(theta, delta) = R(theta) diag(1, exp(i delta)) R(-theta).
@@ -55,6 +55,14 @@ def validate():
                     2*np.real(np.conj(ex)*ey), 2*np.imag(np.conj(ex)*ey)]
         np.testing.assert_allclose(stokes(q, h), expected, atol=1e-12)
         np.testing.assert_allclose(np.linalg.norm(stokes(q, h)), 1, atol=1e-12)
+
+
+def raster_targets(q_steps=31, h_steps=61):
+    """Return the serpentine QWP/HWP targets used by the plot and hardware."""
+    if any(not isinstance(n, (int, np.integer)) or n < 1 for n in (q_steps, h_steps)):
+        raise ValueError('Raster dimensions must be positive integers')
+    return np.array([(q, h) for i, q in enumerate(np.linspace(-45, 45, q_steps))
+                     for h in np.linspace(0, 90, h_steps)[::1 if i % 2 == 0 else -1]])
 
 
 def build_figure(animate=True):
@@ -113,8 +121,7 @@ def build_figure(animate=True):
                       valinit=0, valfmt='%1.1f°')
     button = Button(fig.add_axes([0.84,0.10,0.13,0.075]), 'Start scan')
     # Serpentine raster in motor-angle coordinates, continuous at row changes.
-    scan = [(q,h) for i,q in enumerate(np.linspace(-45,45,31))
-            for h in np.linspace(0,90,61)[::1 if i % 2 == 0 else -1]]
+    scan = raster_targets()
     state = {'running': False, 'i': 0, 'trail': [], 'updating': False}
 
     def update(_=None):

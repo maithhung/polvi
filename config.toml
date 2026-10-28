@@ -1,0 +1,50 @@
+# Shared application settings. CLI options override these values.
+# Paths are relative to this file. Empty optional strings mean "not set".
+
+[scan]
+mode = "equal-area"                 # raster, torus, equal-area, uniform-angle
+samples = 4096                      # raster uses q_steps * h_steps instead
+q_steps = 31
+h_steps = 61
+ratio = 1.4142135623730951            # torus frequency ratio, sqrt(2)
+targets_csv = ""                    # e.g. data/movement_balanced_results/batches_of_256.csv
+
+[visa]
+backend = ""                        # system default, @py, or a VISA library path
+timeout_ms = 10000
+
+[pcu]
+resource = ""                       # e.g. TCPIP0::192.168.1.10::5025::SOCKET
+module = 0
+q_offset_deg = 0.0
+h_offset_deg = 0.0
+q_sign = 1
+h_sign = 1
+motion_timeout_s = 30.0
+poll_interval_s = 0.05
+angle_tolerance_deg = 0.1
+
+[mpm]
+resource = ""                       # e.g. TCPIP0::192.168.1.161::5000::SOCKET
+module = 0
+channels = [1]
+wavelength_nm = 1550.0
+averaging_ms = 5.0
+unit = "dBm"                        # dBm or mW
+command_delay_s = 0.01
+
+[measurement]
+output = "data/measurements.csv"
+settle_s = 0.1
+progress_every = 25
+
+[optimization]
+samples = 4096
+batch_size = 256
+passes = 3
+objective = "travel"                # travel, time, balanced
+q_speed = 1.0                       # degrees/second for the time objective
+h_speed = 1.0
+output = "data/movement_results"
+figure_output = ""                  # empty: fig/<output folder name>/movement_comparison.png
+plot = false

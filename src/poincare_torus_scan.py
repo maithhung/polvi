@@ -20,9 +20,9 @@ a dense discrete sequence. We choose dt=sqrt(3)/1000. In exact arithmetic,
 1, dt, sqrt(2)*dt are rationally independent, so the sampled orbit is dense.
 Sampling at integer t would instead freeze u and miss most of the sphere!
 
-Run: python poincare_torus_scan.py
-Optional: --samples 24000 --ratio irrational --save torus_scan.png
-Optional: --csv torus_scan.csv (unwrapped angles, wrapped angles, and Stokes)
+Run: python src/poincare_torus_scan.py
+Optional: --samples 24000 --ratio irrational --save fig/torus_scan.png
+Optional: --csv data/torus_scan.csv (unwrapped angles, wrapped angles, and Stokes)
 Dependencies: numpy, matplotlib, and the adjacent poincare_scan.py module.
 """
 

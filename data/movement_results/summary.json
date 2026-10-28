@@ -1,0 +1,81 @@
+{
+  "samples": 4096,
+  "objective": "travel",
+  "speeds_deg_s": [
+    1.0,
+    1.0
+  ],
+  "batch_size": 256,
+  "assumptions": "Free rotation, fixed (0,0) start, open path, no return, ideal optics, equal measurement dwell. No stage dynamics or bounds.",
+  "routes": {
+    "original_wrapped": {
+      "q_total_deg": 127347.4131504817,
+      "h_total_deg": 113135.29975808963,
+      "total_deg": 240482.71290857135,
+      "mean_transition_deg": 58.72593721821034,
+      "max_transition_deg": 78.37047805367926,
+      "simultaneous_time_proxy_s": 131205.59164530173,
+      "objective_value": 240482.71290857135,
+      "encoder_min_deg": [
+        -44.2029686932464,
+        -13.187665288534191
+      ],
+      "encoder_max_deg": [
+        44.46700254422949,
+        11901.176602179385
+      ]
+    },
+    "original_branch_optimized": {
+      "q_total_deg": 127347.4131504817,
+      "h_total_deg": 113135.29975808963,
+      "total_deg": 240482.71290857135,
+      "mean_transition_deg": 58.72593721821034,
+      "max_transition_deg": 78.37047805367926,
+      "simultaneous_time_proxy_s": 131205.59164530173,
+      "objective_value": 240482.71290857135,
+      "encoder_min_deg": [
+        -44.2029686932464,
+        -13.187665288534191
+      ],
+      "encoder_max_deg": [
+        44.46700254422949,
+        11901.176602179385
+      ]
+    },
+    "global_optimized": {
+      "q_total_deg": 616.4856674581426,
+      "h_total_deg": 3331.4098224871914,
+      "total_deg": 3947.895489945334,
+      "mean_transition_deg": 0.9640770427216933,
+      "max_transition_deg": 29.74004721656518,
+      "simultaneous_time_proxy_s": 3352.5427836411973,
+      "objective_value": 3947.895489945334,
+      "encoder_min_deg": [
+        -134.4670025442298,
+        -337.9633288828022
+      ],
+      "encoder_max_deg": [
+        0.03208949146957707,
+        247.50933244842628
+      ]
+    },
+    "batches_of_256": {
+      "q_total_deg": 12404.11377283665,
+      "h_total_deg": 13422.127661134407,
+      "total_deg": 25826.241433971056,
+      "mean_transition_deg": 6.3067744649501964,
+      "max_transition_deg": 72.88175349712,
+      "simultaneous_time_proxy_s": 18701.839386913638,
+      "objective_value": 25826.241433971056,
+      "encoder_min_deg": [
+        -670.8311898377837,
+        -198.77166415452575
+      ],
+      "encoder_max_deg": [
+        133.90294886924997,
+        322.27700521843724
+      ]
+    }
+  },
+  "validation": "Target permutations, every Stokes vector, Jones checks and batch checkpoints passed."
+}
